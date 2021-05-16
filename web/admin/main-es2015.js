@@ -1594,8 +1594,8 @@ let AddItemCategoryComponent = class AddItemCategoryComponent {
         this.submitted = true;
         if (this.addItemCategoryForm.valid) {
             let brandSting = [];
-            for (let x in this.brandList) {
-                brandSting.push(this.brandList[x].item_id);
+            for (let x in this.selectedItems) {
+                brandSting.push(this.selectedItems[x].item_id);
             }
             const formData = new FormData();
             formData.append('title', this.addItemCategoryForm.get('title').value);

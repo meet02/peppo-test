@@ -2522,8 +2522,8 @@
             if (this.addItemCategoryForm.valid) {
               var brandSting = [];
 
-              for (var x in this.brandList) {
-                brandSting.push(this.brandList[x].item_id);
+              for (var x in this.selectedItems) {
+                brandSting.push(this.selectedItems[x].item_id);
               }
 
               var formData = new FormData();
