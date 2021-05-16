@@ -1,0 +1,722 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Doodle",
+    "description": "Doodle"
+  },
+  "paths": {
+    "/collection/create-collection": {
+      "post": {
+        "x-controller-name": "collectionController",
+        "x-operation-name": "createCotroller",
+        "tags": [
+          "collectionController"
+        ],
+        "responses": {
+          "200": {
+            "description": "createCotroller",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "collectionType": {
+                    "type": "string",
+                    "enum": [
+                      "free",
+                      "premium"
+                    ]
+                  },
+                  "coverImage": {
+                    "type": "file",
+                    "format": "binary"
+                  },
+                  "collectionImages": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "collectionController.createCotroller"
+      }
+    },
+    "/collection/update-collection": {
+      "put": {
+        "x-controller-name": "collectionController",
+        "x-operation-name": "updateController",
+        "tags": [
+          "collectionController"
+        ],
+        "responses": {
+          "200": {
+            "description": "updateController",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "collectionId": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "collectionType": {
+                    "type": "string",
+                    "enum": [
+                      "free",
+                      "premium"
+                    ]
+                  },
+                  "coverImage": {
+                    "type": "file",
+                    "format": "binary"
+                  },
+                  "collectionImages": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "collectionController.updateController"
+      }
+    },
+    "/collection/{type}": {
+      "get": {
+        "x-controller-name": "collectionController",
+        "x-operation-name": "getCollectionList",
+        "tags": ["collectionController"],
+        "security": [
+          {
+            "jwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "getCollectionList",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "enum":["free","premium","all"]
+            }
+          }
+        ],
+        "operationId": "collectionController.getCollectionList"
+      }
+    },
+    "/collection/active-collection": {
+      "put": {
+        "x-controller-name": "collectionController",
+        "x-operation-name": "activeCollection",
+        "tags": [
+          "collectionController"
+        ],
+        "responses": {
+          "200": {
+            "description": "activeCollection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids":{
+                    "type": "string",
+                    "description":"id should be common separted (COL001,COL002)"
+                    
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "collectionController.activeCollection"
+      }
+    },
+    "/collection/inactive-collection": {
+      "put": {
+        "x-controller-name": "collectionController",
+        "x-operation-name": "inactiveCollection",
+        "tags": [
+          "collectionController"
+        ],
+        "responses": {
+          "200": {
+            "description": "inactiveCollection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids":{
+                    "type": "string",
+                    "description":"id should be common separted (COL001,COL002)"
+                    
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "collectionController.inactiveCollection"
+      }
+    },
+    "/collection/delete-collection": {
+      "put": {
+        "x-controller-name": "collectionController",
+        "x-operation-name": "deleteCollection",
+        "tags": [
+          "collectionController"
+        ],
+        "responses": {
+          "200": {
+            "description": "deleteCollection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids":{
+                    "type": "string",
+                    "description":"id should be common separted (COL001,COL002)"
+                    
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "collectionController.deleteCollection"
+      }
+    },
+    "/about/create-about": {
+      "post": {
+        "x-controller-name": "aboutController",
+        "x-operation-name": "createAbout",
+        "tags": [
+          "aboutController"
+        ],
+        "responses": {
+          "200": {
+            "description": "createAbout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "externalUrl": {
+                    "type": "string"
+                  },
+                  "externalWebUrl": {
+                    "type": "string"
+                  },
+                  "customImage": {
+                    "type": "file",
+                    "format": "binary"
+                  }
+                  
+                }
+              }
+            }
+          }
+        },
+        "operationId": "aboutController.createAbout"
+      }
+    },
+    "/about": {
+      "get": {
+        "x-controller-name": "aboutController",
+        "x-operation-name": "getAboutInfo",
+        "tags": ["aboutController"],
+        "security": [
+          {
+            "jwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "getAboutInfo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "operationId": "aboutController.getAboutInfo"
+      }
+    },
+    "/setting/create-setting": {
+      "post": {
+        "x-controller-name": "settingController",
+        "x-operation-name": "createAbout",
+        "tags": [
+          "settingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "createSetting",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "logoImage": {
+                    "type": "file",
+                    "format": "binary"
+                  },
+                  "onBoardingImage1": {
+                    "type": "file",
+                    "format": "binary"
+                  },
+                  "onBoardingImage2": {
+                    "type": "file",
+                    "format": "binary"
+                  },
+                  "premiumSubBackImage": {
+                    "type": "file",
+                    "format": "binary"
+                  },
+                  "premiumSubSucBackImage": {
+                    "type": "file",
+                    "format": "binary"
+                  }
+                  
+                }
+              }
+            }
+          }
+        },
+        "operationId": "settingController.createSetting"
+      }
+    },
+    "/setting": {
+      "get": {
+        "x-controller-name": "settingController",
+        "x-operation-name": "getSettingInfo",
+        "tags": ["settingController"],
+        "security": [
+          {
+            "jwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "getSettingInfo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "operationId": "settingController.getSettingInfo"
+      }
+    },
+    "/admin/create-admin-user": {
+      "post": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "createAdmin",
+        "tags": [
+          "AdminController"
+        ],
+        "responses": {
+          "200": {
+            "description": "createAdmin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "email":{
+                    "type": "string"
+                  },
+                  "password":{
+                    "type": "string"
+                  },
+                  "profilePhoto": {
+                    "type": "file",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AdminController.createAdmin"
+      }
+    },
+    "/admin/login-admin-user": {
+      "post": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "loginAdminUser",
+        "tags": [
+          "AdminController"
+        ],
+        "responses": {
+          "200": {
+            "description": "loginAdminUser",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "password":{
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AdminController.loginAdminUser"
+      }
+    },
+    "/admin/update-admin-user": {
+      "put": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "updateUser",
+        "tags": [
+          "AdminController"
+        ],
+        "responses": {
+          "200": {
+            "description": "updateUser",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string"
+                  },
+                  "userName": {
+                    "type": "string"
+                  },
+                  "email":{
+                    "type": "string"
+                  },
+                  "password":{
+                    "type": "string"
+                  },
+                  "profilePhoto": {
+                    "type": "file",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AdminController.updateUser"
+      }
+    },
+    "/admin/get-admin-user": {
+      "get": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "getUserList",
+        "tags": ["AdminController"],
+        "security": [
+          {
+            "jwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "getUserList",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AdminController.getUserList"
+      }
+    },
+    "/admin/active-admin-user": {
+      "put": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "activeAdmin",
+        "tags": [
+          "AdminController"
+        ],
+        "responses": {
+          "200": {
+            "description": "activeAdmin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids":{
+                    "type": "string",
+                    "description":"id should be common separted (COL001,COL002)"
+                    
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AdminController.activeAdmin"
+      }
+    },
+    "/admin/inactive-admin-user": {
+      "put": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "inactiveAdmin",
+        "tags": [
+          "AdminController"
+        ],
+        "responses": {
+          "200": {
+            "description": "inactiveAdmin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids":{
+                    "type": "string",
+                    "description":"id should be common separted (COL001,COL002)"
+                    
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AdminController.inactiveAdmin"
+      }
+    },
+    "/admin/delete-admin-user": {
+      "put": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "deleteUser",
+        "tags": [
+          "AdminController"
+        ],
+        "responses": {
+          "200": {
+            "description": "deleteUser",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids":{
+                    "type": "string",
+                    "description":"id should be common separted (COL001,COL002)"
+                    
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AdminController.deleteUser"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:9001/api"
+    },
+    {
+      "url":"http://3.22.15.207:9001/api"
+    }
+  ]
+}
