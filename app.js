@@ -62,9 +62,8 @@ var authToken = () => {
   return (req, res, next) => {
     // next()
     let url = req.url;
-    console.log("url", url);
+
     if (req.query) {
-      console.log(req.query);
       url = url.split("?")[0] || url;
     }
     if (req.url == "/login-admin-user") {

@@ -29,11 +29,9 @@ router.post("/create-item", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -67,11 +65,9 @@ router.put("/update-item", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -129,11 +125,9 @@ router.put("/active-item", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -151,11 +145,9 @@ router.put("/inactive-item", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -173,11 +165,9 @@ router.put("/delete-item", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,

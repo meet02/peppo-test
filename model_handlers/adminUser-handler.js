@@ -65,13 +65,12 @@ const creatAdminUser = (body, files) => {
           profilePhoto = updatedFileName;
 
           let filePath = imagePathConstant.ADMIN_IMAGE + updatedFileName;
-          console.log("filePath", filePath);
+
           fs.writeFile(
             filePath,
             files.profilePhoto.data,
             async function (data, err) {
               if (err) {
-                console.log(err);
                 reject(err);
                 return;
               }
@@ -174,10 +173,8 @@ const loginUserName = (body) => {
               return;
             }
             getUserName.profilePhoto = `${config.baseUrl}${imagePathConstant.ADMIN_IMAGE_URL}${getUserName.profilePhoto}`;
-            console.log("getUserName", getUserName.profilePhoto);
 
             let token = jwtToken.generateToken({ user_id: getUserName.userId });
-            console.log("token", token);
 
             getUserName["token"] = token;
             resolve(getUserName);
@@ -272,13 +269,12 @@ const updateAdminUser = (body, files) => {
           profilePhoto = updatedFileName;
 
           let filePath = imagePathConstant.ADMIN_IMAGE + updatedFileName;
-          console.log("filePath", filePath);
+
           fs.writeFile(
             filePath,
             files.profilePhoto.data,
             async function (data, err) {
               if (err) {
-                console.log(err);
                 reject(err);
                 return;
               }
@@ -353,7 +349,6 @@ const updateAdminUser = (body, files) => {
 const getAdminUser = (queryParams) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("queryParams.userId", queryParams);
       let matchColumn = {};
       if (!_.isEmpty(queryParams.userId)) {
         matchColumn["userId"] = queryParams.userId;

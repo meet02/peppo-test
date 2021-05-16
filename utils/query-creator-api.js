@@ -23,7 +23,6 @@ module.exports = {
       dbCollection
         .find(comparisonColumnsAndValues, columnsToSelect, (error, data) => {
           if (error) {
-            console.log(error);
             reject(error);
             return;
           }
@@ -100,7 +99,6 @@ module.exports = {
         { new: true, projection: columnToSelect },
         function (error, data) {
           if (error) {
-            console.log("errpr=>" + error);
             logger("Error: making async main query");
             reject(error);
             return;
@@ -185,8 +183,6 @@ module.exports = {
           options,
           function (error, data) {
             if (error) {
-              console.log(error);
-
               logger("Error: can not update document");
               reject(error);
               return;
@@ -284,7 +280,6 @@ module.exports = {
         { new: true, projection: columnToSelect },
         function (error, data) {
           if (error) {
-            console.log("errpr=>" + error);
             logger("Error: making async main query");
             reject(error);
             return;
@@ -310,8 +305,7 @@ module.exports = {
         const dbCollection = mongoose.model(collectionName);
         page = parseInt(page) - 1;
         sizePerPage = parseInt(sizePerPage);
-        console.log("page", page);
-        console.log("sizePerPage", sizePerPage);
+
         dbCollection
           .find(
             comparisonColumnsAndValues,

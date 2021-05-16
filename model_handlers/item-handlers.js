@@ -144,7 +144,6 @@ const updateItem = (body, files) => {
             files.itemImage.data,
             async function (data, err) {
               if (err) {
-                console.log(err);
                 reject(err);
                 return;
               }
@@ -329,7 +328,7 @@ const deleteMethod = (body) => {
       }
 
       body.ids = body.ids.split(",");
-      console.log("body.ids", body.ids);
+
       let DeleteData = await query.removeMultiple(dbConstant.dbSchema.items, {
         itemId: {
           $in: body.ids,
@@ -348,7 +347,6 @@ const deleteMethod = (body) => {
 const getActiveItem = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("call");
       let matchColumn = {
         status: "active",
       };
@@ -359,11 +357,10 @@ const getActiveItem = () => {
         { _id: 0, itemCategoryId: 1, title: 1 },
         { created_at: -1 }
       );
-      console.log("getList", getList);
+
       resolve(getList);
       return;
     } catch (err) {
-      console.log(err);
       reject(err);
       return;
     }

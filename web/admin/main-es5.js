@@ -365,8 +365,6 @@
 
           this.getData = function () {
             _this.httpService.getMethod("".concat(_config__WEBPACK_IMPORTED_MODULE_7__["config"].BASE_URL, "admin/get-admin-user?userId=").concat(_this.userId)).subscribe(function (data) {
-              console.log(data);
-
               if (Object.keys(data.data).length == 0) {
                 _this.toaster.open({
                   text: _constants_error_constants__WEBPACK_IMPORTED_MODULE_8__["ErrorConstants"].ADMIN_DATA_NOT_FOUND,
@@ -455,7 +453,6 @@
           value: function submit() {
             var _this4 = this;
 
-            console.log("submitcall");
             this.submitted = true;
 
             if (this.editAdminForm.valid) {
@@ -1193,8 +1190,6 @@
 
           this.getData = function () {
             _this10.httpService.getMethod("".concat(_config__WEBPACK_IMPORTED_MODULE_7__["config"].BASE_URL, "brand/get-brand?brandId=").concat(_this10.brandId)).subscribe(function (data) {
-              console.log(data);
-
               if (Object.keys(data.data).length == 0) {
                 _this10.toaster.open({
                   text: _constants_error_constants__WEBPACK_IMPORTED_MODULE_8__["ErrorConstants"].ADMIN_DATA_NOT_FOUND,
@@ -1282,7 +1277,6 @@
           value: function submit() {
             var _this13 = this;
 
-            console.log("submitcall");
             this.submitted = true;
 
             if (this.editForm.valid) {
@@ -1890,8 +1884,6 @@
               // Client-side errors
               errorMessage = "Error: ".concat(error.error.message);
             } else {
-              console.log("server side error", error.status);
-
               if (error.status == 509 || error.status == 405 || error.status == 412) {
                 this.router.navigate(['login']);
               } // Server-side errors
@@ -2104,7 +2096,6 @@
             };
             this.httpService.getMethod("".concat(_config__WEBPACK_IMPORTED_MODULE_7__["config"].BASE_URL, "item-category/get-active-item-category")).subscribe(function (data) {
               var itemCategoryList = data.data;
-              console.log("itemCategoryList", itemCategoryList);
 
               for (var x in data.data) {
                 _this14.dropdownListItemCategory.push({
@@ -2168,10 +2159,6 @@
                 itemSting.push(this.selectedItemsItemCategory[_x].itemCategoryId);
               }
 
-              console.log({
-                brandSting: brandSting,
-                itemSting: itemSting
-              });
               var formData = new FormData();
               formData.append('title', this.addItemForm.get('title').value);
               formData.append('description', this.addItemForm.get('description').value);
@@ -2270,7 +2257,6 @@
               }
 
               _this17.dropdownListBrand = brandList;
-              console.log("this.dropdownListBrand", _this17.dropdownListBrand);
             }, function (err) {
               if (err.error.error.message) {
                 _this17.toaster.open({
@@ -4320,7 +4306,7 @@
       });
 
       var config = {
-        BASE_URL: "http://3.22.15.207:9002/api/" // BASE_URL:"http://localhost:9001/api/"
+        BASE_URL: "http://18.217.196.220:9002/api/" // BASE_URL:"http://localhost:9001/api/"
 
       };
       /***/
@@ -4467,7 +4453,6 @@
           value: function submit() {
             var _this30 = this;
 
-            console.log("submitcall");
             this.submitted = true;
 
             if (this.addAdminForm.valid) {
@@ -5660,8 +5645,6 @@
 
           this.getData = function () {
             _this31.httpService.getMethod("".concat(_config__WEBPACK_IMPORTED_MODULE_7__["config"].BASE_URL, "item-category/get-item-category?itemCategoryId=").concat(_this31.itemCategoryId)).subscribe(function (data) {
-              console.log(data);
-
               if (Object.keys(data.data).length == 0) {
                 _this31.toaster.open({
                   text: _constants_error_constants__WEBPACK_IMPORTED_MODULE_8__["ErrorConstants"].ADMIN_DATA_NOT_FOUND,
@@ -5707,8 +5690,6 @@
                   description: data.data[0].description,
                   brand: _this31.selectedItems
                 });
-
-                console.log("selectedItems", _this31.selectedItems);
               }
             }, function (err) {
               if (err.error.error.message) {
@@ -5823,7 +5804,6 @@
 
             if (this.editForm.valid) {
               var brandSting = [];
-              console.log("this.selectedItems", this.selectedItems);
 
               for (var x in this.selectedItems) {
                 brandSting.push(this.selectedItems[x].item_id);
@@ -6976,7 +6956,6 @@
 
               _this45.httpService.getMethod("".concat(_config__WEBPACK_IMPORTED_MODULE_7__["config"].BASE_URL, "item-category/get-active-item-category")).subscribe(function (data) {
                 var itemCategoryList = data.data;
-                console.log("itemCategoryList", itemCategoryList);
 
                 for (var x in data.data) {
                   _this45.dropdownListItemCategory.push({
@@ -7006,7 +6985,6 @@
                   brand: [[], null],
                   itemImage: []
                 });
-                console.log("itemData", itemData);
 
                 _this45.editForm.patchValue({
                   title: itemData.title,
@@ -7080,10 +7058,6 @@
                 itemSting.push(this.selectedItemsItemCategory[_x2].itemCategoryId);
               }
 
-              console.log({
-                brandSting: brandSting,
-                itemSting: itemSting
-              });
               var formData = new FormData();
               formData.append('title', this.editForm.get('title').value);
               formData.append('description', this.editForm.get('description').value);
@@ -7185,7 +7159,6 @@
               }
 
               _this48.dropdownListBrand = brandList;
-              console.log("this.dropdownListBrand", _this48.dropdownListBrand);
             }, function (err) {
               if (err.error.error.message) {
                 _this48.toaster.open({

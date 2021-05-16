@@ -117,7 +117,7 @@ export class EditItemCategoryComponent implements OnInit {
 
   getData = () => {
     this.httpService.getMethod(`${config.BASE_URL}item-category/get-item-category?itemCategoryId=${this.itemCategoryId}`).subscribe((data: any) => {
-      console.log(data);
+
       if (Object.keys(data.data).length == 0) {
         this.toaster.open({
           text: ErrorConstants.ADMIN_DATA_NOT_FOUND,
@@ -142,7 +142,7 @@ export class EditItemCategoryComponent implements OnInit {
           description: data.data[0].description,
           brand: this.selectedItems
         })
-        console.log("selectedItems", this.selectedItems)
+
       }
     }, (err) => {
       if (err.error.error.message) {
@@ -171,7 +171,7 @@ export class EditItemCategoryComponent implements OnInit {
     this.submitted = true;
     if (this.editForm.valid) {
       let brandSting = []
-      console.log("this.selectedItems", this.selectedItems)
+
       for (let x in this.selectedItems) {
         brandSting.push(this.selectedItems[x].item_id)
       }

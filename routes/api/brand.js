@@ -24,11 +24,9 @@ router.post("/create-brand", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -57,11 +55,9 @@ router.put("/update-brand", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -79,11 +75,9 @@ router.get("/get-brand", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -101,11 +95,9 @@ router.get("/admin/get-brand", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -123,11 +115,9 @@ router.get("/get-brand-list-by-category", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -145,11 +135,9 @@ router.put("/active-brand", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -167,11 +155,9 @@ router.put("/inactive-brand", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -189,11 +175,9 @@ router.put("/delete-brand", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,

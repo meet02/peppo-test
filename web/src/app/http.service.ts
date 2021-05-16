@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpErrorResponse,HttpParams, HttpHandler} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams, HttpHandler } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import {Router,ActivatedRoute} from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 
 
@@ -10,8 +10,8 @@ import {Router,ActivatedRoute} from "@angular/router";
   providedIn: 'root'
 })
 export class HttpService {
-  
-  constructor(private http: HttpClient, private httpHeaders:HttpHandler,private router:Router) { }
+
+  constructor(private http: HttpClient, private httpHeaders: HttpHandler, private router: Router) { }
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
@@ -19,34 +19,33 @@ export class HttpService {
       // Client-side errors
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      console.log("server side error",error.status)
-      if(error.status==509 || error.status==405 || error.status==412)
-        { 
-            this.router.navigate(['login'])
-        }
+
+      if (error.status == 509 || error.status == 405 || error.status == 412) {
+        this.router.navigate(['login'])
+      }
       // Server-side errors
-      
+
     }
     // window.alert(errorMessage);
     return throwError(errorMessage);
   }
 
 
-  getMethod(url){
+  getMethod(url) {
     // const options = { params: new HttpParams({fromString:queryString }) };
-    return this.http.get(url).pipe(retry(1),catchError(this.handleError))
-    }
-
-  postMethod(url,body){
-    return this.http.post(url,body).pipe(retry(1),catchError(this.handleError))
+    return this.http.get(url).pipe(retry(1), catchError(this.handleError))
   }
 
-  putMethod(url,body){
-    return this.http.put(url,body).pipe(retry(1),catchError(this.handleError))
+  postMethod(url, body) {
+    return this.http.post(url, body).pipe(retry(1), catchError(this.handleError))
   }
 
-  deleteMEthod(url,body){
-    return this.http.delete(url,body).pipe(retry(1),catchError(this.handleError))
+  putMethod(url, body) {
+    return this.http.put(url, body).pipe(retry(1), catchError(this.handleError))
+  }
+
+  deleteMEthod(url, body) {
+    return this.http.delete(url, body).pipe(retry(1), catchError(this.handleError))
   }
 
 

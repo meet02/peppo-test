@@ -183,7 +183,6 @@ let EditAdminUserComponent = class EditAdminUserComponent {
         this.isChange = false;
         this.getData = () => {
             this.httpService.getMethod(`${_config__WEBPACK_IMPORTED_MODULE_7__["config"].BASE_URL}admin/get-admin-user?userId=${this.userId}`).subscribe((data) => {
-                console.log(data);
                 if (Object.keys(data.data).length == 0) {
                     this.toaster.open({
                         text: _constants_error_constants__WEBPACK_IMPORTED_MODULE_8__["ErrorConstants"].ADMIN_DATA_NOT_FOUND,
@@ -247,7 +246,6 @@ let EditAdminUserComponent = class EditAdminUserComponent {
         this.router.navigate(['../list'], { relativeTo: this.activeRoute });
     }
     submit() {
-        console.log("submitcall");
         this.submitted = true;
         if (this.editAdminForm.valid) {
             const formData = new FormData();
@@ -717,7 +715,6 @@ let EditBrandComponent = class EditBrandComponent {
         this.isChange = false;
         this.getData = () => {
             this.httpService.getMethod(`${_config__WEBPACK_IMPORTED_MODULE_7__["config"].BASE_URL}brand/get-brand?brandId=${this.brandId}`).subscribe((data) => {
-                console.log(data);
                 if (Object.keys(data.data).length == 0) {
                     this.toaster.open({
                         text: _constants_error_constants__WEBPACK_IMPORTED_MODULE_8__["ErrorConstants"].ADMIN_DATA_NOT_FOUND,
@@ -780,7 +777,6 @@ let EditBrandComponent = class EditBrandComponent {
         this.router.navigate(['../list'], { relativeTo: this.activeRoute });
     }
     submit() {
-        console.log("submitcall");
         this.submitted = true;
         if (this.editForm.valid) {
             const formData = new FormData();
@@ -1181,7 +1177,6 @@ let HttpService = class HttpService {
             errorMessage = `Error: ${error.error.message}`;
         }
         else {
-            console.log("server side error", error.status);
             if (error.status == 509 || error.status == 405 || error.status == 412) {
                 this.router.navigate(['login']);
             }
@@ -1305,7 +1300,6 @@ let AddItemComponent = class AddItemComponent {
         };
         this.httpService.getMethod(`${_config__WEBPACK_IMPORTED_MODULE_7__["config"].BASE_URL}item-category/get-active-item-category`).subscribe((data) => {
             let itemCategoryList = data.data;
-            console.log("itemCategoryList", itemCategoryList);
             for (let x in data.data) {
                 this.dropdownListItemCategory.push({ itemCategoryId: data.data[x].itemCategoryId, title: data.data[x].title });
             }
@@ -1356,7 +1350,6 @@ let AddItemComponent = class AddItemComponent {
             for (let x in this.selectedItemsItemCategory) {
                 itemSting.push(this.selectedItemsItemCategory[x].itemCategoryId);
             }
-            console.log({ brandSting, itemSting });
             const formData = new FormData();
             formData.append('title', this.addItemForm.get('title').value);
             formData.append('description', this.addItemForm.get('description').value);
@@ -1427,7 +1420,6 @@ let AddItemComponent = class AddItemComponent {
                 brandList.push({ brandId: data.data[x].brandId, title: data.data[x].title });
             }
             this.dropdownListBrand = brandList;
-            console.log("this.dropdownListBrand", this.dropdownListBrand);
         }, (err) => {
             if (err.error.error.message) {
                 this.toaster.open({
@@ -2846,7 +2838,7 @@ AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
 const config = {
-    BASE_URL: "http://3.22.15.207:9002/api/"
+    BASE_URL: "http://18.217.196.220:9002/api/"
     // BASE_URL:"http://localhost:9001/api/"
 };
 
@@ -2918,7 +2910,6 @@ let AddAdminUserComponent = class AddAdminUserComponent {
         this.router.navigate(['../list'], { relativeTo: this.activeRoute });
     }
     submit() {
-        console.log("submitcall");
         this.submitted = true;
         if (this.addAdminForm.valid) {
             const formData = new FormData();
@@ -3701,7 +3692,6 @@ let EditItemCategoryComponent = class EditItemCategoryComponent {
         this.selectedItems = [];
         this.getData = () => {
             this.httpService.getMethod(`${_config__WEBPACK_IMPORTED_MODULE_7__["config"].BASE_URL}item-category/get-item-category?itemCategoryId=${this.itemCategoryId}`).subscribe((data) => {
-                console.log(data);
                 if (Object.keys(data.data).length == 0) {
                     this.toaster.open({
                         text: _constants_error_constants__WEBPACK_IMPORTED_MODULE_8__["ErrorConstants"].ADMIN_DATA_NOT_FOUND,
@@ -3724,7 +3714,6 @@ let EditItemCategoryComponent = class EditItemCategoryComponent {
                         description: data.data[0].description,
                         brand: this.selectedItems
                     });
-                    console.log("selectedItems", this.selectedItems);
                 }
             }, (err) => {
                 if (err.error.error.message) {
@@ -3808,7 +3797,6 @@ let EditItemCategoryComponent = class EditItemCategoryComponent {
         this.submitted = true;
         if (this.editForm.valid) {
             let brandSting = [];
-            console.log("this.selectedItems", this.selectedItems);
             for (let x in this.selectedItems) {
                 brandSting.push(this.selectedItems[x].item_id);
             }
@@ -4578,7 +4566,6 @@ let EditItemComponent = class EditItemComponent {
             itemData = itemData.data[0];
             this.httpService.getMethod(`${_config__WEBPACK_IMPORTED_MODULE_7__["config"].BASE_URL}item-category/get-active-item-category`).subscribe((data) => {
                 let itemCategoryList = data.data;
-                console.log("itemCategoryList", itemCategoryList);
                 for (let x in data.data) {
                     this.dropdownListItemCategory.push({ itemCategoryId: data.data[x].itemCategoryId, title: data.data[x].title });
                 }
@@ -4596,7 +4583,6 @@ let EditItemComponent = class EditItemComponent {
                     brand: [[], null],
                     itemImage: [],
                 });
-                console.log("itemData", itemData);
                 this.editForm.patchValue({
                     title: itemData.title,
                     description: itemData.description,
@@ -4661,7 +4647,6 @@ let EditItemComponent = class EditItemComponent {
             for (let x in this.selectedItemsItemCategory) {
                 itemSting.push(this.selectedItemsItemCategory[x].itemCategoryId);
             }
-            console.log({ brandSting, itemSting });
             const formData = new FormData();
             formData.append('title', this.editForm.get('title').value);
             formData.append('description', this.editForm.get('description').value);
@@ -4734,7 +4719,6 @@ let EditItemComponent = class EditItemComponent {
                 brandList.push({ brandId: data.data[x].brandId, title: data.data[x].title });
             }
             this.dropdownListBrand = brandList;
-            console.log("this.dropdownListBrand", this.dropdownListBrand);
         }, (err) => {
             if (err.error.error.message) {
                 this.toaster.open({

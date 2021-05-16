@@ -17,7 +17,7 @@ module.exports = {
   // Validation Error
   validationError: function (formatForWire, msg, errorName, language) {
     msg = msg.replace(/['"]+/g, "");
-    console.log("msg", msg);
+
     const error = new DZError(msg, responseCodes.Invalid, errorName);
     return formatForWire ? this.formatErrorForWire(error) : error;
   },

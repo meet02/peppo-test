@@ -66,7 +66,7 @@ export class EditBrandComponent implements OnInit {
 
   getData = () => {
     this.httpService.getMethod(`${config.BASE_URL}brand/get-brand?brandId=${this.brandId}`).subscribe((data: any) => {
-      console.log(data);
+
       if (Object.keys(data.data).length == 0) {
         this.toaster.open({
           text: ErrorConstants.ADMIN_DATA_NOT_FOUND,
@@ -105,7 +105,7 @@ export class EditBrandComponent implements OnInit {
   }
 
   submit() {
-    console.log("submitcall")
+
     this.submitted = true;
     if (this.editForm.valid) {
 

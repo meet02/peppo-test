@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
   templateUrl: 'progress.component.html'
@@ -24,7 +24,7 @@ export class ProgressComponent implements OnDestroy {
     if (this.timer) {
       clearInterval(this.timer);
     }
-    // console.log(`onDestroy`, this.timer);
+
   }
 
   random(): void {

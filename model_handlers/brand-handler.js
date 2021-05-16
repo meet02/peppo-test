@@ -119,7 +119,6 @@ const updateBrand = (body, files) => {
             files.brandImage.data,
             async function (data, err) {
               if (err) {
-                console.log(err);
                 reject(err);
                 return;
               }
@@ -306,7 +305,7 @@ const deleteBrand = (body) => {
       }
 
       body.ids = body.ids.split(",");
-      console.log("body.ids", body.ids);
+
       let DeleteData = await query.removeMultiple(dbConstant.dbSchema.brands, {
         brandId: {
           $in: body.ids,
@@ -363,7 +362,6 @@ const getBrandAdminListByCategory = (queryParams) => {
       for (let x of getCateogry.brand) {
         brandIdList.push(x[0]);
       }
-      console.log(brandIdList);
 
       let matchColumn = {
         status: "active",

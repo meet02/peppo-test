@@ -18,7 +18,6 @@ mongoose
     );
   })
   .catch((error) => {
-    console.log(error);
     func.printLog(func.logCons.LOG_LEVEL_ERROR, JSON.stringify(error));
   });
 

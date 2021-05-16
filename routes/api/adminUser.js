@@ -25,11 +25,9 @@ router.post("/create-admin-user", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -57,11 +55,9 @@ router.post("/login-admin-user", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -91,11 +87,9 @@ router.put("/update-admin-user", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -113,11 +107,9 @@ router.get("/get-admin-user", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -135,11 +127,9 @@ router.put("/active-admin-user", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -157,11 +147,9 @@ router.put("/inactive-admin-user", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -179,11 +167,9 @@ router.put("/delete-admin-user", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,

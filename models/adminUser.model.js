@@ -36,7 +36,7 @@ const adminUserSchema = new Schema(
 
 adminUserSchema.pre("save", (callback) => {
   this.userId = idGenerator.generateRandom(labelConstants.ADMIN_USER);
-  console.log("this.userId", this.userId);
+
   callback();
 });
 

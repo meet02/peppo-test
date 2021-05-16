@@ -22,14 +22,11 @@ const fetchToken = (req) => {
     userId: userId,
   };
 
-  console.log("obj", obj);
-
   return obj;
 };
 
 const verifyToken = (requestParam) => {
   return new Promise(async (resolve, reject) => {
-    console.log("requestParam", requestParam);
     if (requestParam.token.code) {
       resolve(405);
     } else if (requestParam.token.token) {
@@ -37,14 +34,12 @@ const verifyToken = (requestParam) => {
         requestParam.token.token,
         process.env.ACCESS_TOKEN_SECRET,
         async (error, decoded) => {
-          console.log("decoded", decoded);
           if (error) {
             if (error.name == "TokenExpiredError") {
               resolve(412);
               return;
             }
             if (error.name == "JsonWebTokenError") {
-              console.log("1111");
               resolve(509);
               return;
             }
@@ -57,7 +52,6 @@ const verifyToken = (requestParam) => {
             resolve(200);
             return;
           } else {
-            console.log("2222");
             resolve(509);
             return;
           }
@@ -81,7 +75,7 @@ const generateToken = (requestParam) => {
       expiresIn: expireTime,
     }
   );
-  console.log(expireTime);
+
   return token;
 };
 
@@ -89,7 +83,7 @@ const verifyAuthToken = async (req, res, next) => {
   let tokenCode = await verifyToken({
     token: fetchToken(req),
   });
-  console.log("token code: " + tokenCode);
+
   if (tokenCode == "200") {
     next();
   } else {

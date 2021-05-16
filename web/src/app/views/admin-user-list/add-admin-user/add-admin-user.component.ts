@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Router,ActivatedRoute} from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 
 import { FormGroup, Validators, FormControl, AbstractControl, ValidatorFn, FormArray, FormBuilder } from '@angular/forms';
-import {HttpService} from "./../../../http.service"
-import {config} from "./../../../config"
-import {ErrorConstants} from "./../../../constants/error-constants"
+import { HttpService } from "./../../../http.service"
+import { config } from "./../../../config"
+import { ErrorConstants } from "./../../../constants/error-constants"
 import { ToastConfig, Toaster, ToastType } from "ngx-toast-notifications";
 
 @Component({
@@ -16,64 +16,61 @@ import { ToastConfig, Toaster, ToastType } from "ngx-toast-notifications";
 })
 export class AddAdminUserComponent implements OnInit {
 
-  submitted=false;
+  submitted = false;
   profilePhotoSrc
-  addAdminForm:FormGroup
-  constructor(private router: Router,private activeRoute:ActivatedRoute,
-    private formBuilder:FormBuilder,private httpService: HttpService,private toaster:Toaster) { }
-  
+  addAdminForm: FormGroup
+  constructor(private router: Router, private activeRoute: ActivatedRoute,
+    private formBuilder: FormBuilder, private httpService: HttpService, private toaster: Toaster) { }
+
 
   ngOnInit(): void {
 
-    this.addAdminForm=this.formBuilder.group({
-      userName:["",Validators.required],
-      email:["",Validators.required],
-      password:["",Validators.required],
-      profilePhoto:[]
+    this.addAdminForm = this.formBuilder.group({
+      userName: ["", Validators.required],
+      email: ["", Validators.required],
+      password: ["", Validators.required],
+      profilePhoto: []
     })
   }
 
   get f() { return this.addAdminForm.controls; }
 
-  onFileChange(event)
-  {
+  onFileChange(event) {
     const reader = new FileReader();
-    
-    if(event.target.files && event.target.files.length) {
+
+    if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
-    
+
       reader.onload = () => {
-   
+
         this.profilePhotoSrc = reader.result as string;
-     
+
         this.addAdminForm.patchValue({
           profilePhoto: file
         });
-   
+
       };
-   
+
     }
   }
 
-  cancel()
-  {
-    this.router.navigate(['../list'],{relativeTo:this.activeRoute})
+  cancel() {
+    this.router.navigate(['../list'], { relativeTo: this.activeRoute })
   }
 
-  submit()
-  {
-    console.log("submitcall")
+  submit() {
+
     this.submitted = true;
-    if(this.addAdminForm.valid) {
+    if (this.addAdminForm.valid) {
 
       const formData = new FormData();
       formData.append('userName', this.addAdminForm.get('userName').value);
       formData.append('email', this.addAdminForm.get('email').value);
       formData.append('password', this.addAdminForm.get('password').value);
       formData.append('profilePhoto', this.addAdminForm.get('profilePhoto').value);
-      
-      this.httpService.postMethod(`${config.BASE_URL}admin/create-admin-user`, formData).subscribe((data)=>{
+
+      this.httpService.postMethod(`${config.BASE_URL}admin/create-admin-user`, formData).subscribe((data) => {
 
         {
           this.toaster.open({
@@ -83,27 +80,26 @@ export class AddAdminUserComponent implements OnInit {
           });
         }
 
-        this.router.navigate(['../list'], {relativeTo:this.activeRoute})
+        this.router.navigate(['../list'], { relativeTo: this.activeRoute })
 
-      },(err)=>{
-        if(err.error.error.message)
-          {
-            this.toaster.open({
-              text: err.error.error.message,
-              caption: 'Error',
-              type: "danger"
-            });
-          }
-          else{
-            this.toaster.open({
-              text: ErrorConstants.INTERNAL_SERVER_ERROR,
-              caption: 'Error',
-              type: "danger"
-            });
-          }
+      }, (err) => {
+        if (err.error.error.message) {
+          this.toaster.open({
+            text: err.error.error.message,
+            caption: 'Error',
+            type: "danger"
+          });
+        }
+        else {
+          this.toaster.open({
+            text: ErrorConstants.INTERNAL_SERVER_ERROR,
+            caption: 'Error',
+            type: "danger"
+          });
+        }
       })
     }
-    else{
+    else {
       this.toaster.open({
         text: ErrorConstants.FORM_NOT_VALID,
         caption: 'Error',

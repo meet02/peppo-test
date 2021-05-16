@@ -4,11 +4,11 @@ const jsonResponse = require("./json-response");
 
 const authenticate = async (req, res, done) => {
   let code = await token.verifyToken({ token: token.fetchToken(req) });
-  console.log("code", code);
+
   if (code == 200) {
     done(null, code);
   } else {
-    //console.log('nope')
+    //
     badRequest(code, req, res, done);
   }
 };

@@ -25,11 +25,9 @@ router.post("/create-item-category", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -59,11 +57,9 @@ router.put("/update-item-category", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -81,11 +77,9 @@ router.get("/get-item-category", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -99,17 +93,14 @@ router.get("/get-item-category", async (req, res) => {
 
 router.get("/get-active-item-category", async (req, res) => {
   try {
-    console.log("get");
     let response = await itemCategoryHandler.getActiveItemCategory();
-    console.log("response", response);
+
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log(error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log(error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -127,11 +118,9 @@ router.put("/active-item-category", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -149,11 +138,9 @@ router.put("/inactive-item-category", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,
@@ -171,11 +158,9 @@ router.put("/delete-item-category", async (req, res) => {
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
     try {
-      console.log("error", error);
       jsonResponse(res, error.code, errors.formatErrorForWire(error), null);
       return;
     } catch (error) {
-      console.log("error", error);
       jsonResponse(
         res,
         responseCodes.BadRequest,

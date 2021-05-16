@@ -48,7 +48,7 @@ export class AddItemComponent implements OnInit {
 
       let itemCategoryList = data.data;
 
-      console.log("itemCategoryList", itemCategoryList)
+
 
       for (let x in data.data) {
         this.dropdownListItemCategory.push({ itemCategoryId: data.data[x].itemCategoryId, title: data.data[x].title })
@@ -113,7 +113,7 @@ export class AddItemComponent implements OnInit {
         itemSting.push(this.selectedItemsItemCategory[x].itemCategoryId)
       }
 
-      console.log({ brandSting, itemSting })
+
 
 
 
@@ -213,7 +213,7 @@ export class AddItemComponent implements OnInit {
 
       }
       this.dropdownListBrand = brandList
-      console.log("this.dropdownListBrand", this.dropdownListBrand)
+
     }, (err) => {
       if (err.error.error.message) {
         this.toaster.open({
