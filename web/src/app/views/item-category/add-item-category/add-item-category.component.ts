@@ -77,8 +77,8 @@ export class AddItemCategoryComponent implements OnInit {
     this.submitted = true;
     if (this.addItemCategoryForm.valid) {
       let brandSting = []
-      for (let x in this.selectedItems) {
-        brandSting.push(this.selectedItems[x].item_id)
+      for (let x in this.brandList) {
+        brandSting.push(this.brandList[x].item_id)
       }
 
 
