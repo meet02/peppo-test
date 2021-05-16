@@ -1,0 +1,13 @@
+.modal-body {
+    height: 400px !important;
+    overflow-y: auto;
+}
+
+.invalid-msg {
+    color: red;
+  }
+
+.required:after {
+    content:" *";
+    color: red;
+  }
